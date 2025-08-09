@@ -2,39 +2,51 @@
 <html lang = "en">
     <head>
         <meta charset = "UTF-8">
-        <meta name = "viewport" content = "width = device-width, initial-scale = 1.0">
-        <title>Calculator</title>
-        <link href = "calculator.css" rel="stylesheet">
+        <meta name = "viewport" content = "width = device-width, initial-scale = 1.0"> 
+        <link href = "calculator.css" rel="stylesheet" type="text/css">
         <script src="calculator.js" defer></script>
+        <title>Calculator</title>
     </head>
 
     <body>
-        <div id="calculator">           
-            <div id="display">123456789012 &nbsp;</div>
-            <div id="symbols">
-                <button id="clear">AC</button>
-                <button id="backspace">C</button>
-                <button class="operator" id="division">÷</button>
+        <div id = "container">
+            <div id="calculator">           
+                <div id="display">
+                    <p id="input"></p>
+                    <p id="result"></p>
+                </div>
+                <div id="symbols">
+                <button id="AC">AC</button>
+                <button id="backspace">DEL</button>
+                <button class="operator" id="divide" >/</button>
                 <br>
                 <button class="number">7</button>
                 <button class="number">8</button>
                 <button class="number">9</button>
-                <button class="operator" id="multiplication">×</button>
+                <button class="operator" id="multiply" >*</button>
                 <br>
                 <button class="number">4</button>
                 <button class="number">5</button>
                 <button class="number">6</button>
-                <button class="operator" id="subtraction">-</button>
+                <button class="operator" id="subtract" >-</button>
                 <br>
                 <button class="number">1</button>
                 <button class="number">2</button>
                 <button class="number">3</button>
-                <button class="operator" id="addition">+</button>
+                <button class="operator" id="add" >+</button>
                 <br>
-                <button class="number" id="zero">0</button>
-                <button class="operator" id="period">.</button>
-                <button class="operator" id="equal">=</button>
-            </div>           
+                <button class="number">0</button>
+                <button id="reverse">+/-</button>
+                <button id="dot">.</button>
+                <button id="equals">=</button>
+                </div>           
+            </div>
+        
+
+            <div id="footer">
+                Copyright &#169; 2025 Nillynill  <a href="https://github.com/nillynill" target="_blank">&nbsp;@github</a>&nbsp;for&nbsp;<a href="https://www.theodinproject.com/lessons/foundations-calculator#project-solution" target="_blank">The Odin Project</a>
+            </div>
         </div>
+
     </body>
 </html>
