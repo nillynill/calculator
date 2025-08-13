@@ -21,7 +21,6 @@ html,
 body{
     height: 100%;
     line-height: 1;
-    font-size: 16px;
     font-family: 'Montserrat', sans-serif;   
 }
 
@@ -62,8 +61,7 @@ body{
     width: 310px;
     border-radius: 20px;
     margin: 0 0 20px 0;
-    font-size: 38px;
-    padding: 10px;
+    padding: 5px;
     box-shadow: -1px 1px gray,
                 -2px 2px gray,
                 -3px 3px gray,
@@ -71,15 +69,16 @@ body{
 transition: 0.1s;
 }
 
-#input{
+#userInputDisplay{
     font-family: inherit;
     color: gray;
     font-size: 18px;
 }
 
-#result{
+#resultDisplay{
     font-family: inherit;
-    font-size: 40px;
+    font-size: 38px;
+    color: rgb(51, 50, 50);
 }
 
 #symbols{
@@ -126,6 +125,7 @@ button:active{
     color: rgb(73, 70, 70);
     padding-top: 5px;
     padding-bottom: 10px;
+    font-size: 16px;
 }
     
     
