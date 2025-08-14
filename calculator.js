@@ -1,4 +1,4 @@
-let number1 = "";
+let number1 = "";       //Do not put an empty space in quotation, it takes one off the place of of 12 digits, and 11 digits remain !!!
 let number2 = "";
 let userInput = "";     //user input...can be number1 or number1 and the operator ... or number1, operator and number2
 let result = "";
@@ -104,3 +104,59 @@ equalsButton.addEventListener("click", () => {
         userInputDisplay.textContent = userInput;
     }
 });
+
+
+//clear (AC) button
+const clearAllButton = document.querySelector("#AC");
+clearAllButton.addEventListener("click", () => {
+result = "";
+userInput = "";
+number1 = "";
+number2 = "";
+operation = "";
+operatorSign ="";
+operatorName = "";
+resultDisplay.textContent = "";
+userInputDisplay.textContent = "";
+
+})
+
+//clearLast (DEL) button
+const clearLastButton = document.querySelector("#backspace");
+clearLastButton.addEventListener("click", () => {
+   if (userInput == "") {
+        if (number1.length >= 1) {
+            number1 = number1.substring(0, number1.length - 1);
+            resultDisplay.textContent = number1;
+        }
+    } else {
+        if (number2.length >= 1) {
+            number2 = number2.substring(0, number2.length - 1);
+            resultDisplay.textContent = number2;
+        }
+    }
+})
+
+// dot button
+const dotButton = document.getElementById('dot');
+dotButton.addEventListener("click", () => {
+    if (userInput == "") {
+        if (!number1.includes(".") && number1.length >= 1) {
+            number1 += ".";
+            resultDisplay.textContent = number1;
+        }
+    }
+    else {
+        if (!number2.includes(".") && number2.length >= 1) {
+            number2 += ".";
+            resultDisplay.textContent = number2;
+        }
+    } 
+})
+
+//reverse sign button 
+const reverseSignButton = document.querySelector("#reverse");
+    reverseSignButton.addEventListener ("click", () => {
+        number2 == "" ? number1 = -number1 : number2 = -number2;
+        number2 == "" ? resultDisplay.textContent = number1 : resultDisplay.textContent = number2;
+    })
