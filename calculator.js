@@ -113,15 +113,12 @@ result = "";
 userInput = "";
 number1 = "";
 number2 = "";
-operation = "";
-operatorSign ="";
-operatorName = "";
 resultDisplay.textContent = "";
 userInputDisplay.textContent = "";
 
 })
 
-//clearLast (DEL) button
+//clearLast (DEL) button   
 const clearLastButton = document.querySelector("#backspace");
 clearLastButton.addEventListener("click", () => {
    if (userInput == "") {
@@ -154,9 +151,96 @@ dotButton.addEventListener("click", () => {
     } 
 })
 
-//reverse sign button 
-const reverseSignButton = document.querySelector("#reverse");
-    reverseSignButton.addEventListener ("click", () => {
-        number2 == "" ? number1 = -number1 : number2 = -number2;
-        number2 == "" ? resultDisplay.textContent = number1 : resultDisplay.textContent = number2;
-    })
+    
+    //keyboard support
+const numberKeys = ["0","1","2","3","4","5","6","7","8","9"];       //number keys
+document.addEventListener("keydown", (event) => {
+    if (numberKeys.includes(event.key)) {
+        if (userInput == "") {
+            resultDisplay.style.fontSize = "38px";
+            number1 += event.key;
+            if (number1.length > 12) {
+                number1 = number1.substring(0, 12);
+                resultDisplay.textContent = number1;
+                userInputDisplay.textContent = resultDisplay.textContent; 
+            }
+            else {
+                
+                resultDisplay.textContent = number1;
+            }
+        }
+        else if (userInput.charAt(userInput.length - 2) == "=") {
+            number1 = "";
+            number1 += event.key;
+            resultDisplay.textContent = number1;
+            userInput = "";
+            userInputDisplay.textContent = userInput;
+        }
+        else {
+            number2 += event.key;
+            if (number2.length > 12) {
+                number2 = number2.substring(0, 12);
+                resultDisplay.textContent = number2;
+                userInputDisplay.textContent = resultDisplay.textContent;  
+            }
+            else {
+                resultDisplay.textContent = number2;
+            }
+        }
+    }
+    else if (event.key == ".") {                                        // dot key
+        if (userInput == "") {
+            if (!number1.includes(".") && number1.length >= 1) {
+                number1 += ".";
+                resultDisplay.textContent = number1;
+            }
+        }
+        else {
+            if (!number2.includes(".") && number2.length >= 1) {
+                number2 += ".";
+                resultDisplay.textContent = number2;
+            }
+        } 
+    }
+    else if (event.key == "Backspace") {                                //clear last digit by Backspace key
+        if (userInput == "") {
+            if (number1.length >= 1) {
+                number1 = number1.substring(0, number1.length - 1);
+                resultDisplay.textContent = number1;
+            }
+        } else {
+            if (number2.length >= 1) {
+                number2 = number2.substring(0, number2.length - 1);
+                resultDisplay.textContent = number2;
+            }
+        }
+    }
+    else if (event.key == "Delete") {                                   //clear all by DEL key
+        number1 = "";
+        number2 = "";
+        userInput = "";
+        result = "";
+        userInputDisplay.textContent = "";
+        resultDisplay.textContent = "";
+    }
+    else if (event.key == "+") {                                        //operator keys
+        chooseoperator(" + ", "add");
+    }
+    else if (event.key == "-") {
+        chooseoperator(" - ", "subtract");
+    }
+    else if (event.key == "*") {
+        chooseoperator(" * ", "multiply");
+    }
+    else if (event.key == "/") {
+        chooseoperator(" / ", "divide");
+    }
+    else if (event.key == "=" || event.key == "Enter") {                // equals key or Enter key
+        if (number1.length != 0 && number2.length != 0 && userInput.charAt(userInput.length - 2) != "=") {
+            userInput += number2 + " = ";
+            operate();
+            operation = "";
+            userInputDisplay.textContent = userInput;
+        }
+    }
+})
